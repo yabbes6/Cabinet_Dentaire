@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+>
+<head>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@600&display=swap" rel="stylesheet">
+    <link href="https://fonts.gstatic.com" rel="preconnect">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/webjars/bootstrap/5.2.3/css/bootstrap.min.css">
+    <link th:href="@{/css/navbar.css}" rel="stylesheet"/>
+    <link th:href="@{/css/patients.css}" rel="stylesheet"/>
+    <title>dental clinic</title>
+</head>
+<body>
+    <div th:replace="navbar :: navbar"></div>
+    <div>
+        <h1 class="title1">Patient List</h1>
+    </div>
+
+    <div><a class="create" th:href="@{/appointments/addP}"><span class="plus">+</span>  Add patient</a></div>
+    <div class="card app">
+        <div class="card-body">
+            <div class="scroll-bar">
+                <div class="card card2" th:each="patient: ${patients}">
+                    <div class="card-body " >
+                        <a class="imgName" th:href="@{/patients/appointmentList(patient_id=${patient.getId()})}">
+
+                            <img class="img" th:src="'data:image/jpeg;base64,'+${patient.urlPicture}" style="width:110px;height:110px;margin-bottom: 12px;">
+
+                            <div>
+                                <div th:text="${patient.first_name} + ' ' + ${patient.last_name}"></div>
+                                <div><a class="btn btn-success mt-4" th:href="@{deletePatient(id=${patient.id})}">Delete</a></div>
+                            </div>
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</body>
+</html>

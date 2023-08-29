@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+
+  <meta http-equi="Content-Type" content="text/html" charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>dental clinic</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+  <!-- Google Fonts-->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@600&display=swap" rel="stylesheet">
+  <link href="https://fonts.gstatic.com" rel="preconnect">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+</head>
+<body>
+<style>
+  .gradient-custom {
+    background: rgb(127,221,127);
+    background: linear-gradient(180deg, rgba(127,221,127,1) 0%, rgba(93,255,97,1) 78%);
+  }
+  .logo {
+    line-height: 1;
+    padding-bottom: 80px;
+    padding-left: 20px;
+  }
+
+  .logo img {
+    max-height: 76px;
+    margin-right: 6px;
+
+  }
+
+  .logo span {
+    font-size: 40px;
+    font-weight: bolder;
+    color: rgb(114, 115, 114);
+    font-family: "open sans", sans-serif;
+  }
+  .logo .cabinet {
+    font-size: 25px;
+    color: rgb(114, 115, 114);
+    font-family: "open sans", sans-serif;
+
+  }
+</style>
+    <section class="vh-100 gradient-custom">
+      <div class="container py-5 h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+          <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+            <div class="card text-bg-dark" style="border-radius: 1rem; background-color: #E8E8E8;box-shadow: 5px 5px 12px">
+              <div class="card-body p-5 text-center">
+                <form method="post" th:action="@{/login}">
+                  <div class="logo d-flex" style="width: 100px;position: relative;left: 90px;" >
+
+                    <span class="d-none d-lg-block"><span class="cabinet">CABINET</span></br>DENTAIRE</span>
+                  </div>
+                  <div class="mb-md-5 mt-md-4 pb-5">
+
+
+                    <div class="form-outline form-white mb-4">
+                      <input type="text" id="typeEmailX" class="form-control form-control-lg" name="username" />
+                      <label class="form-label" for="typeEmailX">Username</label>
+                    </div>
+
+                    <div class="form-outline form-white mb-4">
+                      <input type="password" id="typePasswordX" class="form-control form-control-lg" name="password"/>
+                      <label class="form-label" for="typePasswordX">Password</label>
+                    </div>
+                    <div class="form-outline form-white mb-4" >
+                      <input type="checkbox" id="check" style="display:inline-block" class="form-check" name="remember-me"/>
+                      <label class="form-label" for="check">Remember me</label>
+                    </div>
+                    <button class="btn btn-outline-success btn-lg px-5" type="submit">Login</button>
+
+
+                  </div>
+
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+</body>
+</html>

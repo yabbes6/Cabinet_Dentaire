@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="navbar"
+>
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@600&display=swap" rel="stylesheet">
+    <link href="https://fonts.gstatic.com" rel="preconnect">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+
+    <meta charset="UTF-8">
+    <title>Dental clinic</title>
+    <link rel="stylesheet" href="/webjars/bootstrap/5.2.3/css/bootstrap.min.css">
+    <link th:href="@{/css/navbar.css}" rel="stylesheet"/>
+    <link th:href="@{/css/appointments.css}" rel="stylesheet"/>
+
+
+
+</head>
+<body>
+<div th:replace="navbar :: navbar">
+</div>
+<div>
+    <h1 class="title1">Calendar</h1>
+</div>
+<div>
+    <div class="p-3">
+        <div><a class="create" th:href="@{/appointments/addP}">Add Appointment</a></div>
+        <div class="card app">
+            <div class="card-header card-header1 ">
+                <h2 style="display: inline-block ;margin-right: 870px;font-weight: bold">Appointments</h2>
+                <div style="display: inline-block">
+                    <form th:action="@{/appointments}" method="get">
+                        <button class="search" type="submit">search</button>
+                        <input class="date-app" type="date" id="searchDate" name="date" th:value="${date}"/>
+
+                    </form>
+                </div>
+            </div>
+            <div class="card-body">
+
+                <div class="scroll-bar" >
+                    <table class=" table table-striped">
+                        <thead th:each="appointment:${appointments}">
+                            <tr class="table-row">
+                                <th th:text="${appointment.getDate()}"></th>
+                                <th th:text="${#temporals.format(appointment.getStartTime(), 'HH:mm')}+'  '+${#temporals.format(appointment.getEndTime(), 'HH:mm')}"></th>
+                                <td th:text="${appointment.getPatient().first_name}+' '+${appointment.getPatient().last_name}"></td>
+
+                                <td><a onclick="javascript:confirm('voulez vous le supprimer !')" class="btn btn-success" th:href="@{delete(id=${appointment.getId()},date=${date})}">Delete</a></td>
+                                <td><a class="btn btn-success" th:href="@{/appointments/edit(id=${appointment.getId()},date=${date})}">Edit</a></td>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+       <form th:if="${#authorization.expression('hasRole(''ADMIN'')')}" class="availability col-md-6 " th:action="@{/appointments/saveAvailable}" method="post">
+            <div class="card card1">
+                <div class="card-body alert">
+                    <h4 style="font-weight: bold;margin: 10px 10px">
+                        Availability
+                    </h4>
+
+                    <input value="available" type="radio" checked="checked" name="type" onchange="document.getElementById('unavailable').style.display='none'">
+                    <label style="margin-right: 50px" >Available</label>
+                    <input value="unavailable" type="radio" name="type" onchange="document.getElementById('unavailable').style.display='block'">
+                    <label >Unavailable</label><br/>
+                    <div id="unavailable" style="display: none">
+                        <label class="from" >From</label><input name="startTime" type="time" class="form-control">
+                        <label class="from" >to</label><input name="endTime" type="time" class="form-control">
+                        <button class="btn btn-primary offset-10 mt-1" th:href="@{/appointments}" > Send </button>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <div class="vail">
+            <div class="container">
+                <div th:each="available: ${availability}" class="alert alert-warning alert-dismissible fade show" role="alert">
+                    <div>
+                        <h4><strong>Unavailable</strong><br/>
+                            From <span th:text="${available.startTime}"></span>
+                            to <span th:text="${available.endTime}"></span>
+                        </h4>
+                    </div>
+                    <a th:if="${#authorization.expression('hasRole(''ADMIN'')')}" type="button" class="btn-close" th:href="@{deleteAppointments(id=${available.id})}"></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+</body>
+
+
+
+</html>

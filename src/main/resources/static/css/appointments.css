@@ -1,0 +1,117 @@
+
+.card {
+    position: relative;
+    width: 700px;
+    left: 360px;
+    bottom: -190px;
+
+}
+card-header1{
+    display: inline-block;
+    align-content: baseline;
+}
+.app{
+    width: 1520px;
+    background-color: #C9C9C9 ;
+}
+.tr{
+    background-color: #E8E8E8;
+    margin: 5px 5px;
+}
+.date-app{
+    padding: 10px;
+    border: 0 solid transparent;
+    border-radius: 10px;
+    width: 300px;
+    font-size: 15px;
+}
+.vail{
+    display: inline-block;
+    position: absolute;
+    left: 1100px;
+    bottom: 10px;
+    width:800px
+}
+.create{
+    position: relative;
+    left: 1700px;
+    bottom: -150px;
+}
+.search,.create{
+    text-decoration: none;
+    background-color: #7FDD7F;
+    padding: 10px 10px;
+    color: #111111;
+    border-radius: 10px;
+    border:0 solid transparent;
+    box-shadow: 2px 2px 9px #808080;
+}
+.search:hover,.create:hover{
+    text-decoration: none;
+    background-color: #76d376;
+    padding: 10px 10px;
+    color: #111111;
+    border-radius: 10px;
+    border:0 solid transparent;
+    box-shadow: 0px 0px 0px #808080;
+}
+.availability{
+    position: absolute;
+    bottom: 200px;
+}
+
+.form-control,.from{
+    display:inline-block;
+    margin: 5px 10px 10px 0px;
+}
+
+.form-control{
+    width: 220px;
+    margin-left: 20px;
+}
+
+.scroll-bar{
+    height:350px;
+    border: 0px solid transparent;
+    overflow: auto;
+}
+.send,.title{
+    display: inline-block;
+}
+
+.alert{
+    background-color: #7FDD7F;
+    border-radius: 20px;
+    color: #111;
+}
+.btn-close,.btn-primary{
+    border: 0 solid transparent;
+    border-radius: 10px;
+    background-color: #68d968;
+    box-shadow: 5px 5px 8px #7e7e7e;
+}
+.card1{
+    border: 0 solid transparent;
+    margin-left: 20px;
+}
+.btn-primary{
+    color: #111111;
+    padding: 10px 20px;
+    font-weight: bold;
+}
+.btn-primary:hover{
+    background-color: #7FDD7F;
+    color: #111111;
+    font-weight: bold;
+}
+.title1{
+    display: inline-block;
+    position: relative;
+    left: 400px;
+    bottom: -70px;
+    font-weight: bold;
+    font-family: "open sans", sans-serif;
+    color: #838383;
+
+}
+

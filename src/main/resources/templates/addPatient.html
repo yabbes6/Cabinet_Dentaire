@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+>
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@600&display=swap" rel="stylesheet">
+    <link href="https://fonts.gstatic.com" rel="preconnect">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+    <meta charset="UTF-8">
+    <title>dental clinic</title>
+    <link rel="stylesheet" href="/webjars/bootstrap/5.2.3/css/bootstrap.min.css">
+    <link th:href="@{/css/navbar.css}" rel="stylesheet"/>
+    <link th:href="@{/css/addPatient.css}" rel="stylesheet"/>
+
+
+</head>
+<div th:replace="navbar::navbar"></div>
+<div>
+    <h1 class="title1">New Patient</h1>
+</div>
+<body>
+
+    <div class="p-3 field">
+    <h2>Add Patient</h2>
+
+        <form class="field" th:action="@{/savePatient}" method="post" enctype="multipart/form-data">
+            <div class="mb-2">
+                <input type="file" name="image" class="form-control" >
+            </div>
+            <div class="mb-2">
+                <input type="text" name="first_name" placeholder="First name" class="from-control" required>
+            </div>
+            <div class="mb-2">
+                <input type="text" name="last_name" placeholder="Last name" class="from-control" required>
+            </div>
+            <div class="mb-2">
+                <input type="date" name="birthday" placeholder="Birthday" class="from-control" required>
+            </div>
+            <div class="mb-2">
+                <input type="tel" name="telp" placeholder="Phone" class="from-control" required>
+            </div>
+            <div class="mb-2">
+                <input type="date" name="creationDate" class="from-control" required>
+            </div>
+            <div class="mb-2">
+                <input type="text" name="adress" placeholder="Adress" class="from-control"required>
+            </div>
+            <div class="mb-2">
+                <input type="text" name="cin" placeholder="CIN" class="from-control"required>
+            </div>
+            <div class="mb-2">
+                <input type="text" name="city" placeholder="City" class="from-control" required>
+            </div>
+            <div class="mb-2">
+                <select id="gender" name="gender">
+                    <option value="HOMME">Male</option>
+                    <option value="FEMME">Female</option>
+                </select>
+            </div>
+            <button class="btn btn-outline-success">Save</button>
+
+
+        </form>
+    </div>
+</body>
+</html>

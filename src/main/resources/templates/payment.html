@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+>
+<head>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@600&display=swap" rel="stylesheet">
+    <link href="https://fonts.gstatic.com" rel="preconnect">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/webjars/bootstrap/5.2.3/css/bootstrap.min.css">
+    <link th:href="@{/css/navbar.css}" rel="stylesheet"/>
+    <link th:href="@{/css/payment.css}" rel="stylesheet"/>
+    <title>dental clinic</title>
+</head>
+<body>
+<div th:replace="navbar :: navbar"></div>
+
+<div>
+    <h1 class="title1">Payment Informations</h1>
+</div>
+<div>
+    <div class="p-3">
+        <div class="card app">
+            <div class="card-header card-header1">
+                <div style="display: inline-block">
+                    <form th:action="@{/payment}" method="get">
+                        <button class="search" type="submit">search</button>
+                        <input class="date-app" type="date" id="searchDate" name="date" th:value="${date}"/>
+
+                    </form>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="scroll-bar">
+                    <div class="card" th:each="entry : ${payment}">
+                        <a style="text-decoration: none;color: #111111;font-size: 20px" th:href="@{/payment/dateOfappointmentPricee(date=${entry.key})}">
+                           <div class="card-body app2" style="text-decoration: none; text-align: left" >
+                               <div style="display: inline-block " th:text="${entry.key}" ></div>
+                               <div style="display: inline-block ;position:relative;left: 1100px" th:text="${entry.value}"></div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

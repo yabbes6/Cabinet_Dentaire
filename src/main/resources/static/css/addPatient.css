@@ -1,0 +1,40 @@
+body{
+    z-index: 999;
+    position: relative;
+    left: 500px;
+    bottom: -200px;
+    width: 900px;
+
+}
+*{
+    font-weight: bold;
+}
+.form-control{
+    padding: 15px;
+    width: 400px;
+    border-radius: 10px;
+}
+input,select{
+    padding: 15px;
+    width: 660px;
+    border-radius: 10px;
+}
+.field{
+    display: inline-block;
+    width: 700px;
+}
+
+.title1{
+    position: relative;
+    left: -102px;
+    bottom: 137px;
+    width: 600px;
+    font-weight: bold;
+    font-family: "open sans", sans-serif;
+    color: #838383;
+
+}
+.btn{
+    width: 660px;
+    height: 50px;
+}

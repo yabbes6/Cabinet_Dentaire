@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en"xmlns:th="http://www.thymeleaf.org">
+<head>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@600&display=swap" rel="stylesheet">
+  <link href="https://fonts.gstatic.com" rel="preconnect">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <link rel="stylesheet" href="/webjars/bootstrap/5.2.3/css/bootstrap.min.css">
+  <link th:href="@{/css/navbar.css}" rel="stylesheet"/>
+  <link th:href="@{/css/appointmentList.css}" rel="stylesheet"/>
+  <meta charset="UTF-8">
+    <title>dental clinic</title>
+</head>
+<body>
+<div th:replace="navbar::navbar"></div>
+<div>
+  <h1 class="title1" th:text="${namePatient.first_name}+' '+${namePatient.last_name}"></h1>
+</div>
+<div><a class="create" th:href="@{/patients/addAppointment(patient_id=${namePatient.getId()})}">Add Appointment</a></div>
+<div class="profil">
+  <a class="edit" th:href="@{/patients/appointmentList/editpatient(patient_id=${namePatient.getId()})}">
+
+    <div class="subProfil">
+        <img class="img" th:src="'data:image/jpeg;base64,'+${namePatient.urlPicture}" style="width:130px;height:130px;margin-bottom: 25px;">
+        <div class="imd_info">
+          <h3 th:text="${namePatient.first_name}+' '+${namePatient.last_name}"></h3>
+          <h4 th:text="${namePatient.id}"></h4>
+        </div>
+    </div>
+
+    <div class="profil_img">
+        <div>
+          <h6>Gender</h6>
+          <h7 th:text="${namePatient.gender}"></h7>
+        </div>
+      <div>
+        <h6>Birthday</h6>
+        <h7 th:text="${namePatient.birthday}"></h7>
+      </div>
+      <div>
+        <h6>Phone number</h6>
+        <h7 th:text="${namePatient.telp}"></h7>
+      </div>
+      <div>
+        <h6>Adress</h6>
+        <h7 th:text="${namePatient.adress}"></h7>
+      </div>
+      <div>
+        <h6>City</h6>
+        <h7 th:text="${namePatient.city}"></h7>
+      </div>
+      <div>
+        <h6>Date</h6>
+        <h7 th:text="${namePatient.creationDate}"></h7>
+      </div>
+    </div>
+  </a>
+</div>
+<div class="body">
+    <h2>Upcoming appointment</h2>
+  <div class="line1"></div>
+    <div class="scroll-bar table-responsive" >
+      <table class="table1" th:each="appointmentlist:${appointmentlist}">
+        <tr class="line2">
+          <th th:text="${appointmentlist.getDate()}"></th>
+          <th>Dentist</th>
+          <th>Nurse</th>
+        </tr>
+        <tr>
+          <td th:text="${#temporals.format(appointmentlist.getStartTime(), 'HH:mm')}+'  '+${#temporals.format(appointmentlist.getEndTime(), 'HH:mm')}"></td>
+          <td class="con">Dr.Omar Midaoui</td>
+          <td class="con">Fati Jamal</td>
+        </tr>
+      </table>
+    </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <title>dental clinic</title>
+    <link rel="stylesheet" href="/webjars/bootstrap/5.2.3/css/bootstrap.min.css">
+    <meta content="" name="description">
+    <meta content="" name="keywords">
+
+    <!-- Google Fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@600&display=swap" rel="stylesheet">
+    <link href="https://fonts.gstatic.com" rel="preconnect">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+    <!-- Vendor CSS Files -->
+    <link th:href="@{/bootstrap-icons/bootstrap-icons.css}" rel="stylesheet">
+    <link th:href="@{/boxicons/css/boxicons.min.css}" rel="stylesheet">
+
+    <!-- Template Main CSS File -->
+    <link th:href="@{/css/navbar.css}" rel="stylesheet"/>
+</head>
+
+<body>
+
+<div th:fragment="navbar">
+
+<header id="header" class="header fixed-top d-flex align-items-center">
+
+    <nav class="header-nav ms-auto">
+        <ul class="nav navbar-nav navbar-right">
+            <li class="nav-item"><a class="nav-link" href="#" style="font-size: 20px" th:text="${#authentication.name}"></a></li>
+            <li class="nav-item">
+                <form class="nav-link" method="post" th:action="@{/logout}">
+                    <button class="btn btn-success" style="width: 100px;height: 40px" type="submit" >Sign Out</button>
+                </form>
+            </li>
+        </ul>
+    </nav>
+
+</header>
+
+<aside id="sidebar" class="sidebar">
+    <div class="container d-flex align-items-center justify-content-between">
+        <a th:href="@{/appointments}" class="logo d-flex align-items-center" >
+            <img th:src="@{/img/logo.png}">
+            <span class="d-none d-lg-block"><span class="cabinet">CABINET</span></br>DENTAIRE</span>
+        </a>
+    </div>
+
+    <ul class="sidebar-nav">
+
+        <li class="nav-item">
+            <a class="nav-link active" th:href="@{/appointments}">
+                <span>Calendar</span>
+            </a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link" th:href="@{/patients}">
+                <span>Patient List</span>
+            </a>
+        </li>
+
+        <li th:if="${#authorization.expression('hasRole(''ADMIN'')')}" class="nav-item">
+            <a class="nav-link" th:href="@{/secretary}">
+                <span>Secretary</span>
+            </a>
+        </li>
+
+        <li th:if="${#authorization.expression('hasRole(''ADMIN'')')}" class="nav-item">
+            <a class="nav-link" th:href="@{/payment}">
+                </i><span>Payment Informations</span>
+            </a>
+        </li>
+
+        <li th:if="${#authorization.expression('hasRole(''ADMIN'')')}" class="nav-item">
+            <a class="nav-link collapsed"href="#">
+                <span>Settings</span>
+            </a>
+        </li>
+    </ul>
+</aside>
+
+</div>
+</body>
+</html>
